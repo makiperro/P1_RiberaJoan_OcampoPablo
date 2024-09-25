@@ -10,9 +10,10 @@ public class Pieza implements ItipoPieza{
     private int fila;
     private char tipo;
 
-    public Pieza(char col, int fila, char tipo) {
+    public Pieza(char col, int fila, char tipo) throws Exception {
         this.col = col;
         this.fila = fila;
+        checkTipo(tipo);
         this.tipo = tipo;
     }
     @Override
@@ -31,13 +32,44 @@ public class Pieza implements ItipoPieza{
     }
 
     @Override
-    public void setPosicion(int fila, char columna) { // no se si habra que controlar posiciones invalidas
+    public void setPosicion(int fila, char columna) { // habra que controlar posiciones invalidas
     this.fila = fila;
     this.col = columna;
     }
 
     @Override
     public boolean fiJoc() {
+        if(tipo == 'K') return true;
         return false;
+    }
+
+    private void checkTipo (char tipo) throws Exception{
+    switch(tipo){
+        case PEON:
+            break;
+        case CABALLO:
+            break;
+            case ALPIL:
+                break;
+                case TORRE:
+                    break;
+                    case REINA:
+                        break;
+                        case REY:
+                            break;
+
+        default:
+            throw new Exception("Tipo incorrecto");
+
+    }
+    }
+
+    public String toString() {//idk de lo que hay que printear aqui
+        return "";
+    }
+
+    @Override
+    public boolean equals(Object obj) {//quiza hay que comparar dos piezas??
+        return super.equals(obj);
     }
 }
