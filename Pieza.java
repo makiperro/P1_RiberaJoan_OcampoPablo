@@ -1,4 +1,4 @@
-public class Pieza implements ItipoPieza{
+public class  Pieza implements ItipoPieza{
     public static final char PEON = 'P';
     public static final char CABALLO = 'C';
     public static final char ALPIL = 'A';
@@ -45,19 +45,12 @@ public class Pieza implements ItipoPieza{
 
     private void checkTipo (char tipo) throws Exception{
     switch(tipo){
-        case PEON:
-            break;
-        case CABALLO:
-            break;
-            case ALPIL:
-                break;
-                case TORRE:
-                    break;
-                    case REINA:
-                        break;
-                        case REY:
-                            break;
-
+        case PEON: break;
+        case CABALLO: break;
+        case ALPIL: break;
+        case TORRE: break;
+        case REINA: break;
+        case REY: break;
         default:
             throw new Exception("Tipo incorrecto");
 

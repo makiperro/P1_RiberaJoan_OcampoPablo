@@ -28,12 +28,22 @@ public class Torns <E>{
 
     private void carregarDesdeFitxer(String nomFitxer) throws Exception{
         llistaTorns = new ArrayList();
+
         try(BufferedReader br = new BufferedReader(new FileReader(nomFitxer))){
             String line;
+            ArrayList <E> peces = new ArrayList();
+
             while((line = br.readLine())!=null){
-            llistaTorns.add(line);
+                if(line.equals(";")){
+                    llistaTorns.add((E)peces);
+                  peces = new ArrayList();
+                }
+                else{
+                peces.add((E) new Pieza(line.charAt(0),line.charAt(1)-48,line.charAt(2)));
+                }
+                }
             }
-            catch(Exception){
+        catch(Exception e){
                 throw new Exception();
             }
         }
