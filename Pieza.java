@@ -10,7 +10,7 @@ public class  Pieza implements ItipoPieza{
     private int fila;
     private char tipo;
 
-    public Pieza(char col, int fila, char tipo) throws Exception {
+    public Pieza(char tipo, int fila, char col) throws Exception {
         this.col = col;
         this.fila = fila;
         checkTipo(tipo);
@@ -32,9 +32,12 @@ public class  Pieza implements ItipoPieza{
     }
 
     @Override
-    public void setPosicion(int fila, char columna) { // habra que controlar posiciones invalidas
-    this.fila = fila;
-    this.col = columna;
+    public void setPosicion(int fila, char columna) throws Exception{ // habra que controlar posiciones invalidas
+    if(fila>=9 || columna< 41 || columna > 48){
+        throw new Exception("Posicion incorrecta");
+    }
+        this.fila = fila;   // del 0-7
+        this.col = columna; // del A-H
     }
 
     @Override

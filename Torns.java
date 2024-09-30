@@ -35,7 +35,7 @@ public class Torns <E>{
 
             while((line = br.readLine())!=null){
                 if(line.equals(";")){
-                    llistaTorns.add((E)peces);
+                    afegirTorn((E)peces);
                   peces = new ArrayList();
                 }
                 else{
