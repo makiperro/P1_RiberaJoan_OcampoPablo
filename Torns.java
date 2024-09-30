@@ -49,8 +49,7 @@ public class Torns <E>{
         }
     }
 
-    public void imprimirTorns(){
 
-    }
 
-}
+
+
