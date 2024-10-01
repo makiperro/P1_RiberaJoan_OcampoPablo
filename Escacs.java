@@ -1,3 +1,2 @@
-public class Escacs {
-
+package PACKAGE_NAME;public class Escacs {
 }

@@ -61,7 +61,7 @@ public class  Pieza implements ItipoPieza{
     }
 
     public String toString() {//idk de lo que hay que printear aqui
-        return "";
+        return ;
     }
 
     @Override

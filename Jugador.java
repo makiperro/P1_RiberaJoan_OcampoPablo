@@ -6,7 +6,16 @@ public class Jugador <E extends ItipoPieza>{
     public Jugador(ArrayList<E> piezas){
         piezasVivas = piezas;
     }
-    public E buscarEnPosicion(int fil, int col) {
+    public  getPiezasVivas(ArrayList<E> piezas){
         return null;
+    }
+    public mourePeca(char col, int fila, char colDesti, int filaDesti){
+
+    }
+    private E buscarEnPosicion(int fil, int col) {
+        return null;
+    }
+    public void eliminarPecaPòsicio(int fila char col){
+
     }
 }
