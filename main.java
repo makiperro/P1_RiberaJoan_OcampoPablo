@@ -3,7 +3,7 @@ public class main {
     public static void main(String[] args) {
 
         try{
-        String prova = "C://Users//joanr//OneDrive//Escritorio//TECNO CAMPUS//3R ANY//1R TRIMESTRE//PROG AVANÇADA//P1_RiberaJoan_OcampoPablo//prova.txt";
+        String prova = "C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciNegres.txt";
                 Torns torns = new Torns<>(prova);
         }
         catch(Exception e){

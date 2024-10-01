@@ -6,16 +6,16 @@ public class Jugador <E extends ItipoPieza>{
     public Jugador(ArrayList<E> piezas){
         piezasVivas = piezas;
     }
-    public  getPiezasVivas(ArrayList<E> piezas){
-        return null;
+    public  void getPiezasVivas(ArrayList<E> piezas){
+
     }
-    public mourePeca(char col, int fila, char colDesti, int filaDesti){
+    public void mourePeca(char col, int fila, char colDesti, int filaDesti) throws RuntimeException{
 
     }
     private E buscarEnPosicion(int fil, int col) {
         return null;
     }
-    public void eliminarPecaPòsicio(int fila char col){
-
+    public boolean eliminarPecaPòsicio(int fila ,char col){
+    return false;
     }
 }
