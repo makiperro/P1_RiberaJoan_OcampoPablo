@@ -1,8 +1,8 @@
 public class  Pieza implements ItipoPieza{
     public static final char PEON = 'P';
-    public static final char CABALLO = 'C';
+    public static final char CABALLERO = 'C';
     public static final char ALPIL = 'A';
-    public static final char TORRE = 'B';
+    public static final char TORRE = 'T';
     public static final char REINA = 'R';
     public static final char REY = 'K';
 
@@ -27,8 +27,8 @@ public class  Pieza implements ItipoPieza{
     }
 
     @Override
-    public char getColumna() {//error en el pdf, pone return tipo int y es un atributo tipo char
-        return col;
+    public int getColumna() {//error en el pdf, pone return tipo int y es un atributo tipo char
+        return (int) col;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class  Pieza implements ItipoPieza{
     private void checkTipo (char tipo) throws Exception{
     switch(tipo){
         case PEON: break;
-        case CABALLO: break;
+        case CABALLERO: break;
         case ALPIL: break;
         case TORRE: break;
         case REINA: break;
