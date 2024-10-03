@@ -9,6 +9,7 @@ public class Torns <E>{
         llistaTorns = new ArrayList();
     }
     public Torns(String nomFitxer) throws Exception{
+        llistaTorns = new ArrayList();
         carregarDesdeFitxer(nomFitxer);
     }
 
@@ -16,31 +17,32 @@ public class Torns <E>{
     llistaTorns.add(torn);
     }
 
-    public E agafarPrimerTorn(){
+    public E agafarPrimerTorn() throws NoSuchElementException{ //to be tested
+        if(llistaTorns.isEmpty()){
+            throw new NoSuchElementException();
+        }
         E torn = llistaTorns.get(0);
         llistaTorns.remove(0);
         return torn;
     }
 
-    public void guardarAFitxer(String nomFitxer) throws IOException {
-
+    public void guardarAFitxer(String nomFitxer) throws IOException { //to be tested
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFitxer, true))){
+            for(int i=0; i<llistaTorns.size(); i++){
+                writer.write((String)llistaTorns.get(i)+"\n");
+            }
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
     }
 
-    private void carregarDesdeFitxer(String nomFitxer) throws Exception{
-        llistaTorns = new ArrayList();
+    private void carregarDesdeFitxer(String nomFitxer) throws Exception{ //to be tested
 
         try(BufferedReader br = new BufferedReader(new FileReader(nomFitxer))){
             String line;
-            ArrayList <E> peces = new ArrayList();
 
             while((line = br.readLine())!=null){
-                if(line.equals(";")){
-                    afegirTorn((E)peces);
-                  peces = new ArrayList();
-                }
-                else{
-                peces.add((E) new Pieza(line.charAt(0),line.charAt(1)-48,line.charAt(2)));
-                }
+                afegirTorn((E) line);
                 }
             }
         catch(Exception e){

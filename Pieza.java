@@ -33,7 +33,7 @@ public class  Pieza implements ItipoPieza{
 
     @Override
     public void setPosicion(int fila, char columna) throws Exception{ // habra que controlar posiciones invalidas
-    if(fila>=9 || columna< 41 || columna > 48){
+    if(fila>=9 || columna< 41 || columna > 48 || fila<=0){
         throw new Exception("Posicion incorrecta");
     }
         this.fila = fila;   // del 0-7

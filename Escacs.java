@@ -9,9 +9,6 @@ public class Escacs <E> {
         Pieza taulell[][] =  new Pieza[9][9];
         Scanner myObj = new Scanner(System.in);
         int opcion = mostrarMenu();
-
-
-
         if(opcion == 1) {
 
             Jugador jugadorNegre = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciNegres.txt"));
@@ -45,10 +42,9 @@ public class Escacs <E> {
             System.out.println("2. Reprodueix una partida des d'un fitxer");
             System.out.println("3. Sortir");
             System.out.println("Seleccioneu una opció: ");
-            int opcion = myObj.nextInt();
-            return opcion;
+            return myObj.nextInt();
         }
-        
+
         private static void mostrarTauler(Pieza[][] taulell){
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
@@ -89,7 +85,9 @@ public class Escacs <E> {
 
        private static void tornToPosition(){
 
+
        }
+
 
 
 
