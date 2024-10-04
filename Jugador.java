@@ -30,7 +30,7 @@ public class Jugador <E extends ItipoPieza> {
 
     }
 
-    public boolean eliminarPecaPòsicio(int fila, char col) throws Exception {
+    public boolean eliminarPecaPosicio(int fila, char col) throws Exception {
         for (int i = 0; i < piezasVivas.size(); i++) {
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fila) {
                 piezasVivas.remove(i);
