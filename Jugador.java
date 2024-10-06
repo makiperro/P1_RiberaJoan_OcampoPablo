@@ -1,6 +1,7 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Jugador <E extends ItipoPieza> {
+public class Jugador<E extends ItipoPieza> {
 
     private ArrayList<E> piezasVivas;
 
@@ -12,15 +13,15 @@ public class Jugador <E extends ItipoPieza> {
         return piezasVivas;
     }
 
-    public void mourePeca(char col, int fila, char colDesti, int filaDesti) throws Exception { //hay que controlar errores
+    public void mourePeca(char col, int fila, char colDesti, int filaDesti) throws Exception {
         if (buscarEnPosicion(filaDesti, colDesti) != null) {
-            throw new Exception("A piece is already located in this position");
+            throw new IOException("A piece is already located in this position");
         }
         buscarEnPosicion(fila, col).setPosicion(filaDesti, colDesti);
 
     }
 
-    private E buscarEnPosicion(int fil, int col) throws Exception {//hay que ver si podemos arreglar esto para usarlo en eliminarPeccaPosicio
+    private E buscarEnPosicion(int fil, int col) throws Exception {
         for (int i = 0; i < piezasVivas.size(); i++) {
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fil) {
                 return piezasVivas.get(i);//salimos del bucle
@@ -33,7 +34,7 @@ public class Jugador <E extends ItipoPieza> {
         for (int i = 0; i < piezasVivas.size(); i++) {
 
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fila) {
-                if(piezasVivas.get(i).fiJoc()){
+                if (piezasVivas.get(i).fiJoc()) {
                     throw new FiDeJocException();
                 }
                 piezasVivas.remove(i);
