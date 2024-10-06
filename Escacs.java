@@ -30,7 +30,7 @@ public class Escacs <E> {
 
             }
         }catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
         }
         else if(opcion == 2) {
