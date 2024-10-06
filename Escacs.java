@@ -1,22 +1,39 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Array;
-import java.util.List;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 public class Escacs <E> {
     public static void main(String[] args) throws Exception {
         Pieza taulell[][] =  new Pieza[9][9];
         Scanner myObj = new Scanner(System.in);
+        String llegirTorn;
         int opcion = mostrarMenu();
+        if(opcion == 3) {
+            return;
+        }
         Torns turnos;
-        if(opcion == 1) {
+
             turnos = new Torns();
             Jugador jugadorNegre = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciNegres.txt"));
             Jugador jugadorBlanc = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciBlanques.txt"));
 
             taulell = guardarTaulell(jugadorNegre,jugadorBlanc,taulell);
             mostrarTauler(taulell);
+        if(opcion == 1) {
+        try{
+            while(true){
+                System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
+                llegirTorn = myObj.nextLine();
+                tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
+                System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
+                tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
+
+            }
+        }catch (Exception e){
+        System.out.println(e.getMessage());
+        }
+        }
+        else if(opcion == 2) {
+
         }
     }
 
@@ -32,7 +49,6 @@ public class Escacs <E> {
         }
 
         private static void mostrarTauler(Pieza[][] taulell){
-        System.out.print(" ");
         for(int i = 0; i < 9; i++){
             if(i !=0){
                 System.out.print(i);
@@ -57,16 +73,20 @@ public class Escacs <E> {
         public static Pieza[][] guardarTaulell(Jugador jugadorNegre, Jugador jugadorBlanc, Pieza taulell[][]){
             int fila;
             int columna;
+            for (int i = 0; i < taulell.length; i++) {
+                Arrays.fill(taulell[i], null);  // Efficient null filling
+            }
+
             for(int i = 0; i < jugadorNegre.getPiezasVivas().toArray().length; i++) {//hay que limpiar esto de alguna manera
 
                 if(jugadorNegre.getPiezasVivas().get(i) instanceof Pieza) {
                     fila =((Pieza) jugadorNegre.getPiezasVivas().get(i)).getFila();
-                    columna = (int) ((Pieza) jugadorNegre.getPiezasVivas().get(i)).getColumna() -64;
+                    columna = (int) ((Pieza) jugadorNegre.getPiezasVivas().get(i)).getColumna() -65;
 
                     taulell[fila][columna] = (Pieza) jugadorNegre.getPiezasVivas().get(i);
 
                     fila =((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getFila();
-                    columna = (int) ((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getColumna()-64 ;
+                    columna = (int) ((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getColumna()-65 ;
 
                     taulell[fila][columna] = (Pieza) jugadorBlanc.getPiezasVivas().get(i);
                 }
@@ -90,24 +110,47 @@ public class Escacs <E> {
            }
        }
 
-       private static void reproduirPartida(){
+       private static void reproduirPartida(Scanner myObj, Jugador p1, Jugador p2,Torns torns,  Pieza [][] taulell) throws Exception {//todo
+        Torns turnos = llegirTrons(myObj);
+        while(true){
+            tornToPosition((String)turnos.agafarPrimerTorn(),p1, p2, torns, taulell);
+
+        }
+       }
+
+       private static Torns<String> llegirTrons(Scanner myObj) {//todo
+
+           System.out.println("introdueix nom de fitxer");
+           String nomFitxer = myObj.nextLine();
+           try {
+               Torns<String> torns = new Torns(nomFitxer);
+               return torns;
+           } catch (Exception e) {
+               return llegirTrons(myObj);
+           }
 
        }
 
-       private static Torns<String> llegirTrons(){
-        return null;
-       }
-
-       private static void tornToPosition(String torn, Jugador p1, Jugador p2) throws Exception { //to be tested
+       private static void tornToPosition(String torn, Jugador p1, Jugador p2, Torns turnos, Pieza taulell[][]) throws Exception { //to be tested , CONTROLAR ERRORES
+        System.out.println(torn);
         String torns[] = torn.split(" ");
-        if(torns[0].equals(torns[1])){
-            p2.eliminarPecaPosicio(torns[1].charAt(1),torns[1].charAt(0));
-            p1.mourePeca(torns[0].charAt(0), torns[0].charAt(1),torns[1].charAt(0),torns[1].charAt(1));
+        if(torns[0].equals(torns[1]) ){
+        throw new Exception("invalid coordenates");
         }
-        else{
-            p1.mourePeca(torns[0].charAt(0), torns[0].charAt(1),torns[1].charAt(0),torns[1].charAt(1));
+        try{
+
+            p1.mourePeca(torns[0].charAt(0), torns[0].charAt(1)-49,torns[1].charAt(0),torns[1].charAt(1)-49);
+            p2.eliminarPecaPosicio(torns[1].charAt(1)-49,torns[1].charAt(0));
+            turnos.afegirTorn(torn);
+        }
+        catch(Exception e){ // revisar en runeo
+            p1.mourePeca(torns[0].charAt(0), torns[0].charAt(1)-49,torns[1].charAt(0),torns[1].charAt(1)-49);
+            turnos.afegirTorn(torn);
 
         }
+           guardarTaulell(p1,p2,taulell);
+           mostrarTauler(taulell);
+
 
        }
 

@@ -15,19 +15,18 @@ public class Jugador <E extends ItipoPieza> {
         if (buscarEnPosicion(filaDesti, colDesti) != null) {
             throw new Exception("A piece is already located in this position");
         }
-        buscarEnPosicion(fila, col).setPosicion(filaDesti, colDesti);
+        buscarEnPosicion(fila+1, col).setPosicion(filaDesti+1, colDesti);
 
     }
 
-    private E buscarEnPosicion(int fil, int col) throws Exception {
+    private E buscarEnPosicion(int fil, int col) throws Exception {//hay que ver si podemos arreglar esto para usarlo en eliminarPeccaPosicio
         for (int i = 0; i < piezasVivas.size(); i++) {
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fil) {
 
                 return piezasVivas.get(i);//salimos del bucle
             }
         }
-        throw new Exception("no pieces were found in this position");
-
+        return null;
     }
 
     public boolean eliminarPecaPosicio(int fila, char col) throws Exception {
@@ -38,6 +37,6 @@ public class Jugador <E extends ItipoPieza> {
             }
 
         }
-        throw new Exception("no pieces were found in this position");
+        return false;
     }
 }
