@@ -31,6 +31,9 @@ public class Escacs <E> {
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
+            System.out.println("introdueix nom fitxer");
+            String nomFit = myObj.nextLine();
+            turnos.guardarAFitxer(nomFit);
         }
         }
         else if(opcion == 2) {
