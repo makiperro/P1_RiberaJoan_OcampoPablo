@@ -3,63 +3,63 @@ import java.io.FileReader;
 import java.util.*;
 public class Escacs <E> {
     public static void main(String[] args) throws Exception {
-        Pieza taulell[][] =  new Pieza[9][9];
-        Scanner myObj = new Scanner(System.in);
-        String llegirTorn;
-        int opcion = mostrarMenu();
-        if(opcion == 3) {
-            return;
-        }
-        Torns turnos;
+        while (true) {
+            Pieza taulell[][] = new Pieza[9][9];
+            Scanner myObj = new Scanner(System.in);
+            String llegirTorn;
+            int opcion = mostrarMenu();
+            if (opcion == 3) {
+                return;
+            }
+            Torns turnos;
 
             turnos = new Torns();
             Jugador jugadorNegre = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciNegres.txt"));
             Jugador jugadorBlanc = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciBlanques.txt"));
 
-            taulell = guardarTaulell(jugadorNegre,jugadorBlanc,taulell);
+            taulell = guardarTaulell(jugadorNegre, jugadorBlanc, taulell);
             mostrarTauler(taulell);
-        if(opcion == 1) {
-        try{
-            while(true){
-                System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
-                llegirTorn = myObj.nextLine();
-                tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
-                System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
-                llegirTorn = myObj.nextLine();
-                tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
+            if (opcion == 1) {
+                try {
+                    while (true) {
+                        System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
+                        System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
 
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("introdueix nom fitxer");
-            String nomFit = myObj.nextLine();
-            turnos.guardarAFitxer(nomFit);
-        }
-        }
-        else if(opcion == 2) {
-            try {
-                reproduirPartida(myObj, jugadorBlanc, jugadorNegre, turnos, taulell);
-            }catch (JugadorBlancException e){
-                while(true){
-                    System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
-                    llegirTorn = myObj.nextLine();
-                    tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
-                    System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
-                    llegirTorn = myObj.nextLine();
-                    tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
-
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("introdueix nom fitxer");
+                    String nomFit = myObj.nextLine();
+                    turnos.guardarAFitxer(nomFit);
                 }
-            }
-            catch (JugadorNegreException e){
-                while(true){
-                    System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
-                    llegirTorn = myObj.nextLine();
-                    tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
-                    System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
-                    llegirTorn = myObj.nextLine();
-                    tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
+            } else if (opcion == 2) {
+                try {
+                    reproduirPartida(myObj, jugadorBlanc, jugadorNegre, turnos, taulell);
+                } catch (JugadorBlancException e) {
+                    while (true) {
+                        System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
+                        System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
+
+                    }
+                } catch (JugadorNegreException e) {
+                    while (true) {
+                        System.out.print("Introdueix el torn del Negre Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorNegre, jugadorBlanc, turnos, taulell);
+                        System.out.print("Introdueix el torn del Blanc Exemple: P1 P4");
+                        llegirTorn = myObj.nextLine();
+                        tornToPosition(llegirTorn, jugadorBlanc, jugadorNegre, turnos, taulell);
 
 
+                    }
                 }
             }
         }
