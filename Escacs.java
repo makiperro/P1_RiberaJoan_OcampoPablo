@@ -102,19 +102,21 @@ public class Escacs <E> {
                 Arrays.fill(taulell[i], null);  // Efficient null filling
             }
 
-            for(int i = 0; i < jugadorNegre.getPiezasVivas().toArray().length; i++) {//hay que limpiar esto de alguna manera
+            for(int i = 0; i < jugadorNegre.getPiezasVivas().toArray().length; i++) {
 
                 if(jugadorNegre.getPiezasVivas().get(i) instanceof Pieza) {
                     fila =((Pieza) jugadorNegre.getPiezasVivas().get(i)).getFila();
                     columna = ((Pieza) jugadorNegre.getPiezasVivas().get(i)).getColumna() -65;
 
                     taulell[fila][columna] = (Pieza) jugadorNegre.getPiezasVivas().get(i);
-
-                    fila =((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getFila();
-                    columna =((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getColumna()-65 ;
-
-                    taulell[fila][columna] = (Pieza) jugadorBlanc.getPiezasVivas().get(i);
                 }
+
+                }
+            for(int i = 0; i < jugadorBlanc.getPiezasVivas().toArray().length; i++){
+                fila =((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getFila();
+                columna =((Pieza) jugadorBlanc.getPiezasVivas().get(i)).getColumna()-65 ;
+
+                taulell[fila][columna] = (Pieza) jugadorBlanc.getPiezasVivas().get(i);
             }
             return taulell;
         }
