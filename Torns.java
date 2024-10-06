@@ -27,7 +27,7 @@ public class Torns <E>{
     }
 
     public void guardarAFitxer(String nomFitxer) throws IOException { //to be tested
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFitxer, true))){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFitxer, false))){
             for(int i=0; i<llistaTorns.size(); i++){
                 writer.write((String)llistaTorns.get(i)+"\n");
             }

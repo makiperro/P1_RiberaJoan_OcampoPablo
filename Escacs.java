@@ -32,7 +32,7 @@ public class Escacs <E> {
                     }
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
-                    System.out.println("introdueix nom fitxer");
+                    System.out.println("introdueix nom fitxer per guardar la partida");
                     String nomFit = myObj.nextLine();
                     turnos.guardarAFitxer(nomFit);
                 }
