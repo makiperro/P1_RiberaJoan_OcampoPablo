@@ -41,7 +41,7 @@ public class  Pieza implements ItipoPieza{
     }
 
     @Override
-    public boolean fiJoc() {
+    public boolean fiJoc()  {
         if(tipo == 'K') return true;
         return false;
     }

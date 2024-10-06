@@ -31,11 +31,14 @@ public class Jugador <E extends ItipoPieza> {
 
     public boolean eliminarPecaPosicio(int fila, char col) throws Exception {
         for (int i = 0; i < piezasVivas.size(); i++) {
+            E pieza = piezasVivas.get(i);
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fila) {
+                if(pieza.fiJoc()){
+                    throw new FiDeJocException();
+                }
                 piezasVivas.remove(i);
                 return true;
             }
-
         }
         return false;
     }
