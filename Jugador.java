@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Jugador <E extends ItipoPieza> {
+
     private ArrayList<E> piezasVivas;
 
     public Jugador(ArrayList<E> piezas) {
@@ -22,7 +23,6 @@ public class Jugador <E extends ItipoPieza> {
     private E buscarEnPosicion(int fil, int col) throws Exception {//hay que ver si podemos arreglar esto para usarlo en eliminarPeccaPosicio
         for (int i = 0; i < piezasVivas.size(); i++) {
             if (piezasVivas.get(i).getColumna() == col && piezasVivas.get(i).getFila() == fil) {
-
                 return piezasVivas.get(i);//salimos del bucle
             }
         }
