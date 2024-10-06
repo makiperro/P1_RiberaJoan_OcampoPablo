@@ -16,8 +16,8 @@ public class Escacs<E> {
             Torns turnos;
 
             turnos = new Torns();
-            Jugador jugadorNegre = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciNegres.txt"));
-            Jugador jugadorBlanc = new Jugador(jugarNovaPartida("C://Users//juan_//Desktop//prog av//P1_RiberaJoan_OcampoPablo//IniciBlanques.txt"));
+            Jugador jugadorNegre = new Jugador(jugarNovaPartida("IniciNegres.txt"));
+            Jugador jugadorBlanc = new Jugador(jugarNovaPartida("IniciBlanques.txt"));
 
             taulell = guardarTaulell(jugadorNegre, jugadorBlanc, taulell);
             mostrarTauler(taulell);
